@@ -24,6 +24,8 @@ background-color:#202020;
 height:100%;
 color:#ffff;
 font-size:14px;
+position:sticky;
+top:0;
 `
 const Wrapper = styled.div`
 padding:18px 16px;
@@ -46,11 +48,11 @@ cursor:pointer;
 padding:5px 0;
 `
 const Hr = styled.hr`
-margin:15px 0px;
+margin:10px 0px;
 border:0.5px solid #373737;
 `
 const Login = styled.div`
-
+font-size:10px;
 `
 const Button = styled.div`
 padding:5px 15px;
@@ -62,6 +64,15 @@ font-weight:500;
 margin-top:7px;
 cursor:pointer;
 text-align:center;
+display:flex;
+align-items:center;
+gap:5px; 
+`
+const Title = styled.h1`
+font-size:14px;
+font-weight:500px;
+color:#aaaa;
+margin-bottom:20px;
 `
 
 const Menu = () => {
@@ -96,8 +107,9 @@ const Menu = () => {
                 <Hr />
                 <Login>
                     SignIn to like, comment and subscribe
-                    <Button>SIGN IN</Button>
+                    <Button><AccountCircleOutlinedIcon />SIGN IN</Button>
                 </Login>
+                <Title>BEST OF CIFER</Title>
                 <Hr />
                 <Item>
                     <LibraryMusicOutlinedIcon />
@@ -110,10 +122,6 @@ const Menu = () => {
                 <Item>
                     <SportsEsportsOutlinedIcon />
                     Gaming
-                </Item>
-                <Item>
-                    <HistoryOutlinedIcon />
-                    History
                 </Item>
 
                 <Item>
