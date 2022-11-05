@@ -1,6 +1,9 @@
 import styled from "styled-components"
 import Menu from "./components/Menu";
 import NavBar from "./components/NavBar";
+import { Routes, Route } from "react-router-dom";
+import Video from "./pages/Video";
+import Home from "./pages/Home";
 
 const Container = styled.div`
   display: flex;
@@ -16,13 +19,21 @@ const Wrapper = styled.div`
 function App() {
   return (
     <Container>
+
       <Menu />
       <Main>
         <NavBar />
         <Wrapper>
+          <Routes>
 
+            <Route path="/" element={<Home />} />
+            <Route path="/home" element={<Home />} />
+            <Route path="/video" element={<Video />} />
+            <Route path="/video/:id" element={<Video />} />
+          </Routes>
         </Wrapper>
       </Main>
+
     </Container>
   );
 }

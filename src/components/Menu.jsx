@@ -17,6 +17,7 @@ import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import FlagOutlinedIcon from "@mui/icons-material/FlagOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import SettingsBrightnessOutlinedIcon from "@mui/icons-material/SettingsBrightnessOutlined";
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
 flex:1;
@@ -74,6 +75,10 @@ font-weight:500px;
 color:#aaaa;
 margin-bottom:20px;
 `
+const NavLink = styled.a`
+text-decoration:none;
+
+`
 
 const Menu = () => {
     return (
@@ -83,10 +88,13 @@ const Menu = () => {
                     <Image src={logoImage} alt="logoImage" />
                     Cifer Tube
                 </Logo>
-                <Item>
-                    <HomeIcon />
-                    Home
-                </Item>
+                <NavLink to="/home">
+                    <Item>
+                        <HomeIcon />
+                        Home
+                    </Item>
+                </NavLink>
+
                 <Item>
                     <ExploreOutlinedIcon />
                     Explore
