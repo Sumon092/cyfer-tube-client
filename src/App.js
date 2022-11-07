@@ -14,7 +14,7 @@ const Main = styled.div`
   background-color: #f9f9f9
 `;
 const Wrapper = styled.div`
-  padding: 22px 96px;
+  padding: 10px 16px;
 `;
 function App() {
   return (
@@ -25,10 +25,9 @@ function App() {
         <NavBar />
         <Wrapper>
           <Routes>
-
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
-            <Route path="/video" element={<Video />} />
+            <Route path="/video" element={<Video />} ></Route>
             <Route path="/video/:id" element={<Video />} />
           </Routes>
         </Wrapper>
