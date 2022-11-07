@@ -84,10 +84,12 @@ const Menu = () => {
     return (
         <Container>
             <Wrapper>
-                <Logo>
-                    <Image src={logoImage} alt="logoImage" />
-                    Cifer Tube
-                </Logo>
+                <Link to="/home" style={{ textDecoration: 'none', color: 'inherit' }}>
+                    <Logo style={{ textDecoration: 'none' }}>
+                        <Image src={logoImage} alt="logoImage" />
+                        Cifer Tube
+                    </Logo>
+                </Link>
                 <NavLink to="/home">
                     <Item>
                         <HomeIcon />
