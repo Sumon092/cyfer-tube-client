@@ -7,6 +7,8 @@ import AddTaskOutlinedIcon from "@mui/icons-material/AddTaskOutlined";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import channelImage from "../img/videoimage.png"
+import Comments from '../components/Comments';
+import Comment from '../components/Comment';
 
 const Container = styled.div`
 display:flex;
@@ -49,8 +51,10 @@ gap:5px;
 cursor:pointer;
 `
 const Hr = styled.hr`
-border:0.2px solid #606060;
+border:0.1px solid #606060;
 margin:15px 0px;
+color:#606060;
+
 `
 const Channel = styled.div`
 display:flex;
@@ -82,6 +86,7 @@ margin-bottom:10px;
 const Description = styled.p`
 font-size:14px;
 color:black;
+font-weight:400;
 `
 const Subscribe = styled.button`
 background-color:#cc1a00;
@@ -131,6 +136,9 @@ const Video = () => {
                     </ChannelInfo>
                     <Subscribe>SUBSCRIBE</Subscribe>
                 </Channel>
+                <Hr />
+                <Comments />
+                <Comment />
             </Content>
             <Recommendation>Recommendation</Recommendation>
         </Container>
