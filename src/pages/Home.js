@@ -11,7 +11,7 @@ flex-wrap:wrap;
 
 const Home = ({ type }) => {
     const [videos, setVideos] = useState([]);
-    console.log(videos);
+    // console.log(videos);
     useEffect(() => {
         const fetchVideos = async () => {
             const res = await axios.get(`/videos/${type}`);

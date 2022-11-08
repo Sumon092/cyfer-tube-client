@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import videoImage from '../img/videoimage.png'
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { format } from "timeago.js"
+import { format } from "timeago.js";
+import axios from "axios";
 
 const Container = styled.div`
   width: ${(props) => props.type !== "sm" && "250px"};
@@ -46,13 +47,27 @@ color:#606060;
 margin:5px 0px;
 `
 const Info = styled.div`
-font-size:11px;
+font-size:12px;
 color:#606060
 `
 
 const Card = ({ type, video }) => {
-  console.log(video);
+
+  const [channelInfo, setChannelInfo] = useState([]);
+  console.log(channelInfo);
+  // console.log(videos);
+  useEffect(() => {
+    const fetchVideos = async () => {
+      const res = await axios.get(`/users/find/${video.userId}`);
+      setChannelInfo(res.data)
+    }
+    fetchVideos()
+  }, [video.userId])
+
+
+  // console.log(video);
   const { videoTitle, imgaeUrl, views, createdAt } = video;
+
   return (
     <Link to="/video/test" style={{ textDecoration: 'none' }}>
       <Container type={type}>
