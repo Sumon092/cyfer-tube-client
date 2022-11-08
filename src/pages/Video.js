@@ -9,6 +9,7 @@ import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import channelImage from "../img/videoimage.png"
 import Comments from '../components/Comments';
 import Comment from '../components/Comment';
+import Card from '../components/Card'
 
 const Container = styled.div`
 display:flex;
@@ -139,8 +140,23 @@ const Video = () => {
                 <Hr />
                 <Comments />
                 <Comment />
+                <Comment />
+                <Comment />
+                <Comment />
+                <Comment />
+                <Comment />
             </Content>
-            <Recommendation>Recommendation</Recommendation>
+            <Recommendation>
+                <Card type='sm' />
+                <Card type='sm' />
+                <Card type='sm' />
+                <Card type='sm' />
+                <Card type='sm' />
+                <Card type='sm' />
+                <Card type='sm' />
+                <Card type='sm' />
+                <Card type='sm' />
+            </Recommendation>
         </Container>
     );
 };

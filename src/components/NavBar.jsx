@@ -3,6 +3,7 @@ import styled from "styled-components";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import VideoCallOutlinedIcon from "@mui/icons-material/VideoCallOutlined";
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
 position:sticky;
@@ -53,20 +54,22 @@ const Button = styled.button`
 `;
 
 let NavBar = () => {
-    return (
-        <Container>
-            <Wrapper>
-                <Search>
-                    <Input placeholder='Search'></Input>
-                    <SearchOutlinedIcon />
-                </Search>
-                <Button>
-                    <AccountCircleOutlinedIcon />
-                    SIGN IN
-                </Button>
-            </Wrapper>
-        </Container>
-    );
+  return (
+    <Container>
+      <Wrapper>
+        <Search>
+          <Input placeholder='Search'></Input>
+          <SearchOutlinedIcon />
+        </Search>
+        <Link to="/signIn" style={{ textDecoration: "none", color: 'inherit' }}>
+          <Button>
+            <AccountCircleOutlinedIcon />
+            SIGN IN
+          </Button>
+        </Link>
+      </Wrapper>
+    </Container>
+  );
 };
 
 export default NavBar;

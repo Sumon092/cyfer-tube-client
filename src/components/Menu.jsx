@@ -47,6 +47,9 @@ align-items:center;
 gap:20px;
 cursor:pointer;
 padding:5px 0;
+&:hover{
+    background-color:#606060;
+}
 `
 const Hr = styled.hr`
 margin:10px 0px;
@@ -73,7 +76,7 @@ const Title = styled.h1`
 font-size:14px;
 font-weight:500px;
 color:#aaaa;
-margin-bottom:20px;
+margin-bottom:15px 0px;
 `
 const NavLink = styled.a`
 text-decoration:none;
@@ -115,10 +118,12 @@ const Menu = () => {
                     History
                 </Item>
                 <Hr />
-                <Login>
-                    SignIn to like, comment and subscribe
-                    <Button><AccountCircleOutlinedIcon />SIGN IN</Button>
-                </Login>
+                <Link to="/signIn" style={{ textDecoration: "none", color: 'inherit' }}>
+                    <Login>
+                        SignIn to like, comment and subscribe
+                        <Button><AccountCircleOutlinedIcon />SIGN IN</Button>
+                    </Login>
+                </Link>
                 <Title>BEST OF CIFER</Title>
                 <Hr />
                 <Item>

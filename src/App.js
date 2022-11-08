@@ -4,6 +4,7 @@ import NavBar from "./components/NavBar";
 import { Routes, Route } from "react-router-dom";
 import Video from "./pages/Video";
 import Home from "./pages/Home";
+import SignIn from "./pages/SignIn";
 
 const Container = styled.div`
   display: flex;
@@ -29,6 +30,7 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/video" element={<Video />} ></Route>
             <Route path="/video/:id" element={<Video />} />
+            <Route path="/signIn" element={<SignIn />} />
           </Routes>
         </Wrapper>
       </Main>
