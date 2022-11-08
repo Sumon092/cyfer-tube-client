@@ -9,15 +9,16 @@ justify-content:space-between;
 flex-wrap:wrap;
 `
 
-const Home = () => {
+const Home = ({ type }) => {
     const [videos, setVideos] = useState([]);
+    console.log(videos);
     useEffect(() => {
         const fetchVideos = async () => {
-            const res = await axios.get("/videos/random");
+            const res = await axios.get(`/videos/${type}`);
             setVideos(res.data)
         }
         fetchVideos()
-    }, [])
+    }, [type])
     return (
         <Container>
             {

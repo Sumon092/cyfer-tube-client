@@ -83,7 +83,8 @@ text-decoration:none;
 
 `
 
-const Menu = () => {
+const Menu = ({ type, video }) => {
+    // console.log(video);
     return (
         <Container>
             <Wrapper>
@@ -99,15 +100,21 @@ const Menu = () => {
                         Home
                     </Item>
                 </NavLink>
+                <Link to="/trend" style={{ textDecoration: 'none', color: 'inherit' }}>
 
-                <Item>
-                    <ExploreOutlinedIcon />
-                    Explore
-                </Item>
-                <Item>
-                    <SubscriptionsOutlinedIcon />
-                    Subscription
-                </Item>
+                    <Item>
+                        <ExploreOutlinedIcon />
+                        Explore
+                    </Item>
+                </Link>
+
+                <Link to="/home" style={{ textDecoration: 'none', color: 'inherit' }}>
+
+                    <Item>
+                        <SubscriptionsOutlinedIcon />
+                        Subscription
+                    </Item>
+                </Link>
                 <Hr />
                 <Item>
                     <VideoLibraryOutlinedIcon />

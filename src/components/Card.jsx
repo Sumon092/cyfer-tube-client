@@ -2,6 +2,7 @@ import React from 'react';
 import videoImage from '../img/videoimage.png'
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { format } from "timeago.js"
 
 const Container = styled.div`
   width: ${(props) => props.type !== "sm" && "250px"};
@@ -45,26 +46,28 @@ color:#606060;
 margin:5px 0px;
 `
 const Info = styled.div`
-font-size:8px;
+font-size:11px;
 color:#606060
 `
 
-const Card = ({ type }) => {
-    return (
-        <Link to="/video/test" style={{ textDecoration: 'none' }}>
-            <Container type={type}>
-                <Image type={type} src={videoImage} />
-                <Details type={type}>
-                    <ChannelImage type={type} src={videoImage} />
-                    <Texts>
-                        <Title>The Best Video</Title>
-                        <ChannelName>Cifer Tube</ChannelName>
-                        <Info>687,234 views, 1day ago</Info>
-                    </Texts>
-                </Details>
-            </Container>
-        </Link>
-    );
+const Card = ({ type, video }) => {
+  console.log(video);
+  const { videoTitle, imgaeUrl, views, createdAt } = video;
+  return (
+    <Link to="/video/test" style={{ textDecoration: 'none' }}>
+      <Container type={type}>
+        <Image type={type} src={videoImage} />
+        <Details type={type}>
+          <ChannelImage type={type} src={videoImage} />
+          <Texts>
+            <Title>{videoTitle}</Title>
+            <ChannelName>Cifer Tube</ChannelName>
+            <Info>{views} views, {format(createdAt)}</Info>
+          </Texts>
+        </Details>
+      </Container>
+    </Link>
+  );
 };
 
 export default Card;
