@@ -18,6 +18,7 @@ import FlagOutlinedIcon from "@mui/icons-material/FlagOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import SettingsBrightnessOutlinedIcon from "@mui/icons-material/SettingsBrightnessOutlined";
 import { Link } from 'react-router-dom';
+import { useSelector } from "react-redux";
 
 const Container = styled.div`
 flex:1;
@@ -84,6 +85,7 @@ text-decoration:none;
 `
 
 const Menu = ({ type, video }) => {
+    const { currentUser } = useSelector(state => state.user);
     // console.log(video);
     return (
         <Container>
@@ -125,14 +127,14 @@ const Menu = ({ type, video }) => {
                     History
                 </Item>
                 <Hr />
-                <Link to="/signIn" style={{ textDecoration: "none", color: 'inherit' }}>
+                {!currentUser && <><Link to="/signIn" style={{ textDecoration: "none", color: 'inherit' }}>
                     <Login>
                         SignIn to like, comment and subscribe
                         <Button><AccountCircleOutlinedIcon />SIGN IN</Button>
                     </Login>
                 </Link>
-                <Title>BEST OF CIFER</Title>
-                <Hr />
+                    <Hr /></>}
+                <Title>BEST OF CIFER</Title> 
                 <Item>
                     <LibraryMusicOutlinedIcon />
                     Music
