@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import styled from 'styled-components';
 import CommentImage from '../img/videoimage.png'
 
@@ -23,8 +24,14 @@ const Input = styled.input`
  padding:5px;
  width:100%;
  `
-
-const Comments = () => {
+ 
+ const Comments = () => {
+    const [videos,setVideos]=useState([]);
+    useEffect (()=>{
+const fetchVideos=()=>{
+    const res=axios.get("/video/random")
+}
+    },[])
     return (
         <Container>
             <NewComment>
