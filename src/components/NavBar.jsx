@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 const Container = styled.div`
 position:sticky;
 top:0;
-height:66px;
+height:56px;
 padding:0 20px;
 background-color:#FFFF
 `

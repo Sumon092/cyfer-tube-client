@@ -1,12 +1,84 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Container = styled.div`
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+height:calc(100vh);
+`
+const Wrapper = styled.div`
+display:flex;
+width:200px;
+height:350px;
+align-items:center;
+flex-direction:column;
+background-color:white;
+border:1px solid #f5f5f5;
+padding:20px 50px;
+gap:10px;
+`
+const Title = styled.h1`
+font-size:20px;
+`
+const Subtitle = styled.h2`
+font-size:16px;
+font-weight:300;
+`
+const Input = styled.input`
+border:1px solid #606060;
+border-radius:3px;
+padding:10px;
+background-color:transparent;
+width:100%;
+`
+const Button = styled.button`
+border-radius:3px;
+border:none;
+padding:10px 20px;
+font-weight:500;
+cursor:pointer;
+background-color:#aaaaaa;
+`
+const More = styled.div`
+display:flex;
+margin-top:10px;
+font-size:11px;
+color:#606060;
+`
+const Links = styled.div`
+margin-left:50px;
+`
+const NavLink = styled.a`
+margin-left:30px;
 `
 
 const SignIn = () => {
     return (
-        <Container>SignIn</Container>
+        <Container>
+            <Wrapper>
+                <Title>Sign In</Title>
+                <Subtitle>to continue ciferTube</Subtitle>
+                <Input type='text' placeholder="user name" />
+                <Input type='password' placeholder="password" />
+                <Button>Sign in</Button>
+                <Title>Or</Title>
+                <Input type='text' placeholder="Enter your password" />
+                <Input type='email' placeholder="Enter your email" />
+                <Input type='password' placeholder="password" />
+                <Button>Sign up</Button>
+                <More>
+                    English(USA)
+                    <Links>
+                        <NavLink>Help</NavLink>
+                        <NavLink>Privacy</NavLink>
+                        <NavLink>Terms</NavLink>
+                    </Links>
+                </More>
+            </Wrapper>
+        </Container>
     );
 };
 
