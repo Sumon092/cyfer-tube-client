@@ -59,6 +59,7 @@ display:flex;
 align-items:center;
 gap:10px;
 font-weight:500;
+cursor:pointer;
 `
 const Avatar = styled.img`
 width:32px;
@@ -77,7 +78,7 @@ let NavBar = () => {
         </Search>
         {currentUser ?
           <User>
-            <VideoCallOutlinedIcon />
+            <VideoCallOutlinedIcon style={{ width: '35px', height: '35px', display: "block", fontWeight: '300', cursor: 'pointer' }} />
             <Avatar src={currentUser.image} />
             {currentUser.name}
           </User>
