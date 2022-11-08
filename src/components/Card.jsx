@@ -67,16 +67,17 @@ const Card = ({ type, video }) => {
 
   // console.log(video);
   const { videoTitle, imgaeUrl, views, createdAt } = video;
+  const { image, name } = channelInfo;
 
   return (
     <Link to="/video/test" style={{ textDecoration: 'none' }}>
       <Container type={type}>
         <Image type={type} src={videoImage} />
         <Details type={type}>
-          <ChannelImage type={type} src={videoImage} />
+          <ChannelImage type={type} src={image} />
           <Texts>
             <Title>{videoTitle}</Title>
-            <ChannelName>Cifer Tube</ChannelName>
+            <ChannelName>{name}</ChannelName>
             <Info>{views} views, {format(createdAt)}</Info>
           </Texts>
         </Details>

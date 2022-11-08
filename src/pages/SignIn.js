@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import axios from 'axios';
 
 const Container = styled.div`
 display:flex;
@@ -56,19 +57,36 @@ margin-left:30px;
 `
 
 const SignIn = () => {
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleSignIn = async (e) => {
+        e.preventDefault();
+        try {
+            const res = await axios.post("/auth/signIn", { name, password });
+            console.log(res.data);
+        } catch (error) {
+
+        }
+    }
     return (
         <Container>
             <Wrapper>
                 <Title>Sign In</Title>
                 <Subtitle>to continue ciferTube</Subtitle>
-                <Input type='text' placeholder="user name" />
-                <Input type='password' placeholder="password" />
-                <Button>Sign in</Button>
+                <Input type='text' placeholder="user name" onChange={e => setName(e.target.value)} />
+                <Input type='password' placeholder="password" onChange={e => setPassword(e.target.value)} />
+                <Button onClick={handleSignIn}>Sign in</Button>
+
+
                 <Title>Or</Title>
-                <Input type='text' placeholder="Enter your password" />
-                <Input type='email' placeholder="Enter your email" />
-                <Input type='password' placeholder="password" />
-                <Button>Sign up</Button>
+
+
+                <Input type='text' placeholder="Enter your name" onChange={e => setName(e.target.value)} />
+                <Input type='email' placeholder="Enter your email" onChange={e => setEmail(e.target.value)} />
+                <Input type='password' placeholder="password" onChange={e => setPassword(e.target.value)} />
+                {/* <Button onClick={handleSignUp}>Sign up</Button> */}
                 <More>
                     English(USA)
                     <Links>
