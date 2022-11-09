@@ -18,6 +18,7 @@ const Image = styled.img`
   height: ${(props) => (props.type === "sm" ? "90px" : "202px")};
   background-color: #999;
   flex: 1;
+  
 `;
 
 const Details = styled.div`

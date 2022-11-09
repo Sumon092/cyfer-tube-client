@@ -77,10 +77,17 @@ const SignIn = () => {
     };
     const signInWithGoogle = (e) => {
         e.preventDefault()
+        dispatch(loginStart())
         signInWithPopup(auth, provider).then((result) => {
-            console.log(result)
+            axios.post("auth/google", {
+                name: result.user.displayName,
+                email: result.user.email,
+                img: result.user.photoURL,
+            }).then((res) => {
+                dispatch(loginSuccess(res.data))
+            })
         }).catch((error) => {
-            console.log(error);
+            dispatch(loginFailure())
         })
     }
     return (
