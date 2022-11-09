@@ -81,7 +81,7 @@ const SignIn = () => {
         e.preventDefault()
         dispatch(loginStart())
         signInWithPopup(auth, provider).then((result) => {
-            // console.log(result);
+            console.log(result);
 
             axios.post("auth/google", {
                 name: result.user.displayName,
