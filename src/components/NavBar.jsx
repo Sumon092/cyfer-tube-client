@@ -98,10 +98,10 @@ const NavBar = () => {
           </Search>
           {currentUser ? (
             <User>
-              <VideoCallOutlinedIcon onClick={() => setOpen(true)} />
+              <VideoCallOutlinedIcon onClick={() => setOpen(true)} style={{ fontSize: '40px', cursor: 'pointer' }} />
               <Avatar src={currentUser.img} />
-              {currentUser.name}
-            </User> && <Button onClick={handleSignOut}>SignOut</Button>
+              {currentUser.name ? <Button onClick={handleSignOut}>SignOut</Button> : ''}
+            </User>
           ) : (
             <Link to="/signIn" style={{ textDecoration: "none" }}>
               <Button>
