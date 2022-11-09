@@ -121,7 +121,7 @@ const Video = () => {
     const { currentVideo } = useSelector((state) => state.video);
 
     const { videoTitle, videoUrl, views, _id, likes, dislikes, createdAt, video, desc } = currentVideo;
-    console.log(currentVideo);
+    // console.log(currentVideo);
     const dispatch = useDispatch();
 
     const path = useLocation().pathname.split("/")[2];
@@ -144,11 +144,11 @@ const Video = () => {
     }, [path, dispatch]);
 
     const handleLike = async () => {
-        await axios.put(`/users/like/${_id}`);
+        await axios.put(`/users/likes/${_id}`);
         dispatch(like(currentUser._id));
     };
     const handleDislike = async () => {
-        await axios.put(`/users/dislike/${_id}`);
+        await axios.put(`/users/disLikes/${_id}`);
         dispatch(dislike(currentUser._id));
     };
 

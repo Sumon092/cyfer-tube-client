@@ -110,7 +110,7 @@ const Menu = ({ type, video }) => {
                     </Item>
                 </Link>
 
-                <Link to="/home" style={{ textDecoration: 'none', color: 'inherit' }}>
+                <Link to="/subscribed" style={{ textDecoration: 'none', color: 'inherit' }}>
 
                     <Item>
                         <SubscriptionsOutlinedIcon />
@@ -134,7 +134,7 @@ const Menu = ({ type, video }) => {
                     </Login>
                 </Link>
                     <Hr /></>}
-                <Title>BEST OF CIFER</Title> 
+                <Title>BEST OF CIFER</Title>
                 <Item>
                     <LibraryMusicOutlinedIcon />
                     Music

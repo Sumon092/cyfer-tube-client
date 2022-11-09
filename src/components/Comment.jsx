@@ -1,4 +1,5 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import channelImage from '../img/videoimage.png'
 
@@ -32,13 +33,22 @@ font-size:13px;
 `
 
 
-const Comment = () => {
+const Comment = ({ comment }) => {
+    const [channel, setChannel] = useState({});
+
+    useEffect(() => {
+        const fetchComment = async () => {
+            const res = await axios.get(`/users/find/${comment.userId}`);
+            setChannel(res.data)
+        };
+        fetchComment();
+    }, [comment.userId]);
     return (
         <Container>
-            <Avatar src={channelImage} />
+            <Avatar src={channel.img} />
             <Details>
-                <Name>John Doe <Date>2 hours ago</Date></Name>
-                <Text>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde voluptatum doloremque recusandae ab, nihil quos.</Text>
+                <Name>{channel.name}<Date>2 hours ago</Date></Name>
+                <Text>{comment.desc}</Text>
             </Details>
         </Container>
     );
