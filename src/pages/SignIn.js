@@ -79,12 +79,17 @@ const SignIn = () => {
         e.preventDefault()
         dispatch(loginStart())
         signInWithPopup(auth, provider).then((result) => {
+            // console.log(result);
+
             axios.post("auth/google", {
                 name: result.user.displayName,
                 email: result.user.email,
                 img: result.user.photoURL,
+                result: result.user
             }).then((res) => {
+                console.log(res.data)
                 dispatch(loginSuccess(res.data))
+
             })
         }).catch((error) => {
             dispatch(loginFailure())
