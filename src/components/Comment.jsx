@@ -19,17 +19,17 @@ flex-direction:column;
 gap:10px;
 `
 const Name = styled.span`
-font-size:13px;
+font-size:16px;
 font-weight:500;
 `
 const Date = styled.span`
-font-size:11px;
+font-size:13px;
 font-weight:400px;
 color:#606060;
 margin-left:5px;
 `
 const Text = styled.span`
-font-size:13px;
+font-size:14px;
 `
 
 

@@ -23,7 +23,7 @@ import { useSelector } from "react-redux";
 const Container = styled.div`
 flex:1;
 background-color:#202020;
-height:100%;
+height:100vh;
 color:#ffff;
 font-size:14px;
 position:sticky;

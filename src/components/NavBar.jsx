@@ -1,28 +1,29 @@
-import React from 'react';
+import React, { useState } from "react";
 import styled from "styled-components";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import VideoCallOutlinedIcon from "@mui/icons-material/VideoCallOutlined";
-import { Link } from 'react-router-dom';
-import { useSelector } from "react-redux";
-import { VideoCallOutlined } from '@mui/icons-material';
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import Upload from "./Upload";
+import { logout } from "../redux/userSlice";
 
 const Container = styled.div`
-position:sticky;
-top:0;
-height:56px;
-padding:0 20px;
-background-color:#FFFF
-`
+  position: sticky;
+  top: 0;
+  background-color: ${({ theme }) => theme.bgLighter};
+  height: 56px;
+`;
 
 const Wrapper = styled.div`
-display: flex;
+  display: flex;
   align-items: center;
   justify-content: flex-end;
   height: 100%;
-  padding: 0px 10px;
+  padding: 0px 20px;
   position: relative;
-`
+`;
+
 const Search = styled.div`
   width: 40%;
   position: absolute;
@@ -35,62 +36,84 @@ const Search = styled.div`
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 3px;
-`
+  
+`;
+
 const Input = styled.input`
-background-color:transparent;
-border:none;
-outline:none;
-`
+  border: none;
+  background-color: transparent;
+  outline: none;
+  
+
+`;
+
 const Button = styled.button`
   padding: 5px 15px;
   background-color: transparent;
   border: 1px solid #3ea6ff;
   color: #3ea6ff;
   border-radius: 3px;
-  font-weight: 600;
-  margin-top: 10px;
+  font-weight: 500;
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 5px;
 `;
+
 const User = styled.div`
-display:flex;
-align-items:center;
-gap:10px;
-font-weight:500;
-cursor:pointer;
-`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+  
+`;
+
 const Avatar = styled.img`
-width:32px;
-height:32px;
-border-radius:50%;
-background-color:#999;
-`
-let NavBar = () => {
-  const { currentUser } = useSelector(state => state.user);
-  console.log(currentUser);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #999;
+`;
+
+const NavBar = () => {
+  const navigate = useNavigate()
+  const [open, setOpen] = useState(false);
+  const [q, setQ] = useState("");
+  const { currentUser } = useSelector((state) => state.user);
+  const dispatch = useDispatch()
+
+  const handleSignOut = () => {
+    dispatch(logout())
+  }
   return (
-    <Container>
-      <Wrapper>
-        <Search>
-          <Input placeholder='Search'></Input>
-          <SearchOutlinedIcon />
-        </Search>
-        {currentUser ?
-          <User>
-            <VideoCallOutlinedIcon style={{ width: '35px', height: '35px', display: "block", fontWeight: '300', cursor: 'pointer' }} />
-            <Avatar src={currentUser.img} alt="" />
-            {currentUser.name}
-          </User>
-          : <Link to="/signIn" style={{ textDecoration: "none", color: 'inherit' }}>
-            <Button>
-              <AccountCircleOutlinedIcon />
-              SIGN IN
-            </Button>
-          </Link>}
-      </Wrapper>
-    </Container>
+    <>
+      <Container>
+        <Wrapper>
+          <Search>
+            <Input
+              placeholder="Search"
+              onChange={(e) => setQ(e.target.value)}
+            />
+            <SearchOutlinedIcon onClick={() => navigate(`/search?q=${q}`)} />
+          </Search>
+          {currentUser ? (
+            <User>
+              <VideoCallOutlinedIcon onClick={() => setOpen(true)} />
+              <Avatar src={currentUser.img} />
+              {currentUser.name}
+            </User> && <Button onClick={handleSignOut}>SignOut</Button>
+          ) : (
+            <Link to="/signIn" style={{ textDecoration: "none" }}>
+              <Button>
+                <AccountCircleOutlinedIcon />
+                SIGN IN
+              </Button>
+            </Link>
+          )}
+        </Wrapper>
+      </Container>
+      {open && <Upload setOpen={setOpen} />}
+    </>
   );
 };
 

@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import axios from 'axios';
 import { loginFailure, loginStart, loginSuccess } from '../redux/userSlice';
 import { auth, provider } from '../firebase.js';
 import { signInWithPopup } from 'firebase/auth';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Container = styled.div`
 display:flex;
@@ -63,7 +64,8 @@ const SignIn = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const { currentUser } = useSelector(state => state.user);
 
     const handleSignIn = async (e) => {
         e.preventDefault();
@@ -95,6 +97,17 @@ const SignIn = () => {
             dispatch(loginFailure())
         })
     }
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    let from = location.state?.from?.pathname || "/";
+
+    useEffect(() => {
+        if (currentUser) {
+            navigate(from, { replace: true });
+        }
+    }, [currentUser, from, navigate])
+
     return (
         <Container>
             <Wrapper>
